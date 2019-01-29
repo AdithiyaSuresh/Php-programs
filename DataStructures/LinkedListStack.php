@@ -18,6 +18,7 @@ class LinkedListStack
     }
 
     /**
+     * in function pop
      * Function to remove the data from the stack 
      * 
      * @return data the last stored data

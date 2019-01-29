@@ -72,7 +72,7 @@ class Utility
      **/
     public static function prime_Range($startRange,$endRange)
     {
-        //initializing an empty array
+      //initializing an empty array
       $arr = array();
       $i = 0;
       for($x=$startRange;$x<$endRange;$x++)

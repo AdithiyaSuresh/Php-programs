@@ -8,6 +8,7 @@ class Stack
     //constructor for initializing the values
     public function __construct()
     { 
+        //initializing an array with fixed size
         $this->arr = new SplFixedArray(Stack::$max);
         $this->top = -1; 
     } 
@@ -21,6 +22,7 @@ class Stack
         }
         else
         {
+            //pushing data to top
             $this->arr[++$this->top] = $data;
             echo "$data pushed into stack\n";
         }
@@ -39,6 +41,7 @@ class Stack
         }
         else
         {
+            //removed from top
             $x = $this->arr[$this->top--];
             return $x;
         }
@@ -53,6 +56,7 @@ class Stack
         }
         else
         {
+            //returns top data
             $x = $this->arr[$this->top];
             return $x;
         }

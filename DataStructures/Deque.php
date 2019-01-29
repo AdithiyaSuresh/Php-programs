@@ -26,12 +26,14 @@ class Deque
      */
     public function addFront($item)
     {
+        //when no element is present
         if($this->front==-1 && $this->rear==-1)
         {
             $this->arr[++$this->front] = $item;
             $this->rear = $this->front;
             $this->size++;
         }
+        //when element is present
         else
         {
             $this->front = $this->front-1;
@@ -46,12 +48,14 @@ class Deque
      */
     public function addRear($item)
     {
+        //when no element is present
         if($this->front==-1 && $this->rear==-1)
         {
             $this->arr[++$this->rear] = $item;
             $this->front = $this->rear;
             $this->size++;
         }
+        //when element is present
         else
         {
             $this->rear = $this->rear+1;
@@ -65,12 +69,14 @@ class Deque
      */
     public function removeFront()
     {
+        //if only one element present
         if($this->front==$this->rear)
         {
             $item = $this->arr[$this->front];
             $this->front = $this->rear = -1;
             $this->size--;
         }
+        //if more elements present
         else
         {
             $item = $this->arr[$this->front];
@@ -85,12 +91,14 @@ class Deque
      */
     public function removeRear()
     {
+        //if only one element present
         if($this->rear==$this->front)
         {
             $item = $this->arr[$this->rear];
             $this->rear = $this->front = -1;
             $this->size--;
         }
+        //if more elements present
         else
         {
             $item = $this->arr[$this->rear];

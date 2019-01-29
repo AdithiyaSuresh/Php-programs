@@ -65,7 +65,7 @@ class Queue
       echo "the queue is empty\n";
       return null; 
     }
-    //removing last value and modifying queue 
+    //removing first value and modifying queue 
     $removedValue = $this->front->value;
     $this->front = $this->front->next;
     $this->size--;

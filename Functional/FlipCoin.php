@@ -1,9 +1,16 @@
 <?php
+/** program to flip the coin as many times suggested
+ *  by user and calculate the head and tail percent **/
+
+  //require following function to work
   include 'Utility.php';
+
   echo "enter the no of times to flip the coin ";
-  $num = Utility::taking_number_input();
+  //taking user input for no of times
+  $num = Utility::taking_Number_Input();
   
-  echo Utility::flipcoin($num);
+  //calling function to calculate the percentage
+  echo Utility::flipCoin($num);
 ?>
 
 

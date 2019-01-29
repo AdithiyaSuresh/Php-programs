@@ -1,98 +1,100 @@
 <?php
+
 class Utility
 {
-    public static function taking_string_input()
-    { 
-                                      
-        
-       fscanf(STDIN, "%s\n", $str);
-       
-        
+        //function to get the string input
+        public static function taking_String_Input()
+        { 
+            //fscanf-to take the user input
+            fscanf(STDIN, "%s\n", $str);
             while((!(strlen($str)>=3)) || (is_numeric($str)))
             {                
                 echo "enter a valid string \n";
                 fscanf(STDIN, "%s\n", $str);
             }
-            
             return $str;
-    } 
+        } 
     
-    public static function string_replace($str1,$str2,$str3)
-    {
-         return (str_replace($str2,$str3,$str1));
-    }
-     
-    public static function getint($num)
-    {
-        if(is_int($num))
+    
+        //function to replace the string with user input
+        public static function string_Replace($str1,$str2,$str3)
         {
-         return true;
+            return (str_replace($str2,$str3,$str1));
         }
-        else
-        {
-         return false;
-        }
-    }
 
-    public static function check_float($num)
-    {
-        if(is_numeric($num) && strpos($num,'.'))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-   
-    public static function taking_number_input()
-    {                               
-        
-       fscanf(STDIN, "%s\n", $num);
-       while((!($num>0)) || (Utility::check_float($num)))
-       {
-         echo "enter a valid number ";
-         $num = Utility::taking_number_input();
-       }
-        return $num;
-    } 
-   
     
-    public static function flipcoin($num)
-    {
-        $tailcount = 0;
-        $headcount = 0;
-        for($i=0;$i<$num;$i++)
+        //function to check whether the number is float
+        public static function check_Float($num)
         {
-            $x = mt_rand(0*10,1*10)/10;
-            if($x<0.5)
+            //checking whether number is numeric and have decimal point
+            if(is_numeric($num) && strpos($num,'.'))
             {
-                $tailcount++;
+                return true;
             }
             else
             {
-                $headcount++;
+                return false;
             }
         }
-       
-        echo "percentage of headcount = ".(int)(($headcount*100)/($headcount+$tailcount))."%\n";
-        echo "precentage of tailcount = ".(int)(($tailcount*100)/($headcount+$tailcount))."%\n";
-    }
+   
         
-        public static function get_year()
+        //function to take positive integer input
+        public static function taking_Number_Input()
+        {                               
+        fscanf(STDIN, "%s\n", $num);
+        //validation for positive integer
+        while((!($num>0)) || (Utility::check_Float($num)))
+        {
+            echo "enter a valid number ";
+            $num = Utility::taking_Number_Input();
+        }
+            return $num;
+        } 
+   
+        // function to calculate head and tail percentage
+        public static function flipCoin($num)
+        {
+            $tailcount = 0;
+            $headcount = 0;
+            for($i=0;$i<$num;$i++)
+            {
+                //getting the random number
+                $x = mt_rand(0*10,1*10)/10;
+                if($x<0.5)
+                {
+                    //incrementing tail count
+                    $tailcount++;
+                }
+                else
+                {
+                    //incrementing head count
+                    $headcount++;
+                }
+            }
+            //printing the head and tail percentage count
+            echo "percentage of headcount = ".(int)(($headcount*100)/($headcount+$tailcount))."%\n";
+            echo "precentage of tailcount = ".(int)(($tailcount*100)/($headcount+$tailcount))."%\n";
+        }
+        
+        //function to get the year
+        //returns the year
+        public static function get_Year()
         {
             fscanf(STDIN, "%s\n", $year);
-            while((Utility::check_float($year)) || (!(strlen($year)==4)) || (!(is_numeric($year))) || ($year<0))
+            //validating the year
+            while((Utility::check_Float($year)) || (!(strlen($year)==4)) || (!(is_numeric($year))) || ($year<0))
             {
-              echo "enter a valid year ";
-              $year = Utility::get_year();
+                echo "enter a valid year ";
+                $year = Utility::get_Year();
             }
-             return $year; 
+                return $year; 
         }
 
-        public static function leap_year($year)
+        //function to check leap year
+        //returns string
+        public static function leap_Year($year)
         {
+            //check for leap year
             if($year%4==0 && $year%100!=0 || $year%400==0)
             {
                 return "leap year";
@@ -102,53 +104,51 @@ class Utility
                 return "not leap year";
             }
         }
-        public static function powerof2_input()
+       
+        //function to get the input ie as integer number within 0 and 31
+        public static function powerOfTwoInput()
         {
             fscanf(STDIN, "%s\n", $num);
-            while(!($num>=0 && $num<31) || (!(is_numeric($num))) || (Utility::check_float($num)))
+            //validating input
+            while(!($num>=0 && $num<31) || (!(is_numeric($num))) || (Utility::check_Float($num)))
             {
                 echo "enter a valid number within 31";
-                $num = Utility::powerof2_input();
+                $num = Utility::powerOfTwoInput();
             }
             return $num;
         }
        
-       /* public static function check_integer_num($num)
-        {
-            if(is_numeric($num)&& is_int($num)===true)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }*/
-        
-        public static function power_of_2($num)
+        //function to print the power of 2 till a given range
+        public static function power_Of_Two($num)
         {
             $x = 1;
             for($y=0;$y<=$num;$y++)
             {
+                //printing power of 2
                 echo "2^".$y." = ".$x."\n";
                 $x = $x*2;
             }
         }
 
-        public static function harmonic_input()
+        // function to get the input to calculate the harmonic value
+        public static function harmonic_Input()
         {
             fscanf(STDIN, "%s\n", $num);
-            while((Utility::check_float($num)) || ($num==0) || (!(is_numeric($num))))
+            //validating input
+            while((Utility::check_Float($num)) || ($num==0) || (!(is_numeric($num))))
             {
                 echo "enter a valid number";
-                $num = Utility::harmonic_input();
+                $num = Utility::harmonic_Input();
             }
             return $num;
         }
 
-        public static function Harmonic_Value($num)
+        /** function to get the harmonic value of a given number
+         * returns the number**/
+        public static function harmonic_Value($num)
         {
             $x = 1.0;
+            //calculating harmonic value
             for($y=2;$y<=$num;$y++)
             {
                 $x = $x+(1/$y);
@@ -156,10 +156,13 @@ class Utility
             return $x;
         }
 
+        //function to get the input for finding its factotrs
+        //returns the number
         public static function factor_Input()
         {
             fscanf(STDIN, "%s\n", $num);
-            while((Utility::check_float($num)) || ($num==0) || (!(is_numeric($num))))
+            //validating the number
+            while((Utility::check_Float($num)) || ($num==0) || (!(is_numeric($num))))
             {
                 echo "enter a valid number ";
                 $num = Utility::factor_Input();
@@ -167,6 +170,7 @@ class Utility
             return $num;
         }
 
+        //function to check whether the number is prime
         public static function is_Prime($num)
         {
            for($i=2;$i<=($num/2);$i++)
@@ -177,8 +181,10 @@ class Utility
                return "yes";
         }
         
+        //function to calculate the prime factors
         public static function prime_Factors($num)
         {
+            //checking whether the number is prime and printing the prime factors
             if((Utility::is_Prime($num))=="yes")
             {
                 echo "prime factors are ";
@@ -210,7 +216,7 @@ class Utility
         public static function stake_Input()
         {
             fscanf(STDIN, "%s\n", $stake);
-            while((Utility::check_float($stake)) || ($stake==0) || (!(is_numeric($stake))))
+            while((Utility::check_Float($stake)) || ($stake==0) || (!(is_numeric($stake))))
             {
                 echo "enter a valid number";
                 $stake = Utility::stake_Input();
@@ -221,7 +227,7 @@ class Utility
         public static function goal_Input($stake)
         {
             fscanf(STDIN, "%s\n", $goal);
-            while((Utility::check_float($goal)) || ($goal<=$stake) || (!(is_numeric($goal))))
+            while((Utility::check_Float($goal)) || ($goal<=$stake) || (!(is_numeric($goal))))
             {
                 echo "enter a valid number";
                 $goal = Utility::goal_Input($stake);
@@ -232,7 +238,7 @@ class Utility
         public static function no_Of_Times()
         {
             fscanf(STDIN, "%s\n", $num);
-            while((Utility::check_float($num)) || (!(is_numeric($num))) || ($num==0) || ($num<0))
+            while((Utility::check_Float($num)) || (!(is_numeric($num))) || ($num==0) || ($num<0))
             {
                 echo "enter a valid number ";
                 $num = Utility::no_Of_Times();
@@ -266,7 +272,7 @@ class Utility
         public static function coupon_Input()
         {
             fscanf(STDIN, "%s\n", $num);
-            while((Utility::check_float($num)) || (!(is_numeric($num))) || ($num==0))
+            while((Utility::check_Float($num)) || (!(is_numeric($num))) || ($num==0))
             {
                 echo "enter a valid number ";
                 $num = Utility::coupon_Input();
@@ -302,7 +308,7 @@ class Utility
         public static function no_Of_Rows()
         {
             fscanf(STDIN, "%s\n", $rows);
-            while((Utility::check_float($rows)) || (!(is_numeric($rows))) || ($rows==0))
+            while((Utility::check_Float($rows)) || (!(is_numeric($rows))) || ($rows==0))
             {
                 echo "enter a valid number ";
                 $rows = Utility::no_Of_Rows();
@@ -313,7 +319,7 @@ class Utility
         public static function no_Of_Cols()
         {
             fscanf(STDIN, "%s\n", $cols);
-            while((Utility::check_float($cols)) || (!(is_numeric($cols))) || ($cols==0))
+            while((Utility::check_Float($cols)) || (!(is_numeric($cols))) || ($cols==0))
             {
                 echo "enter a valid number ";
                 $cols = Utility::no_Of_Cols();
@@ -333,7 +339,6 @@ class Utility
                    fscanf(STDIN, "%s\n", $num);
                    $arr[$x][$y] = $num;
                    $count=strlen($arr[$x][$y]);
-                  // echo "test".$count;
                     if($count1<$count)
                     {
                          $count1=$count;
@@ -356,28 +361,12 @@ class Utility
                 }
                 echo "\n";
             }
-           
-          // return $arr;
         }
-
-        // public static function array_Print($arr,$rows,$cols)
-        // {
-        //     echo "arraru_print ".$count1."----------";
-        //     for($x=0;$x<$rows;$x++)
-        //     {
-        //         for($y=0;$y<$cols;$y++)
-        //         {
-
-        //            echo $arr[$x][$y]." ";
-        //         }
-        //         echo "\n";
-        //     }
-        // }
 
         public static function integer_Input()
         {
             fscanf(STDIN, "%s\n", $num);
-            while((Utility::check_float($num)) || (!(is_numeric($num))))
+            while((Utility::check_Float($num)) || (!(is_numeric($num))))
             {
                 echo "enter a valid number ";
                 $num = Utility::integer_Input();

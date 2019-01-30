@@ -1,0 +1,56 @@
+
+{
+      "Rice":[
+                {
+                "name":"basmathi",
+                "weight":30,
+                "price":70
+                },
+                {
+                "name":"jeera",
+                "weight":20,
+                "price":60
+                },
+                {
+                "name":"ponni",
+                "weight":40,
+                "price":80
+                }
+             ],
+           
+    "Pulses":[
+                {
+                "name":"basmathi",
+                "weight":30,
+                "price":70
+                },
+                {
+                "name":"jeera",
+                "weight":20,
+                "price":60
+                },
+                {
+                "name":"ponni",
+                "weight":40,
+                "price":80
+                }
+             ],
+           
+    "Wheats":[
+                {
+                "name":"basmathi",
+                "weight":30,
+                "price":70
+                },
+                {
+                "name":"jeera",
+                "weight":20,
+                "price":60
+                },
+                {
+                "name":"ponni",
+                "weight":40,
+                "price":80
+                }
+             ]
+}

@@ -20,17 +20,17 @@
            
     "Pulses":[
                 {
-                "name":"basmathi",
+                "name":"peas",
                 "weight":30,
                 "price":70
                 },
                 {
-                "name":"jeera",
+                "name":"ground nut",
                 "weight":20,
                 "price":60
                 },
                 {
-                "name":"ponni",
+                "name":"dal",
                 "weight":40,
                 "price":80
                 }
@@ -38,17 +38,17 @@
            
     "Wheats":[
                 {
-                "name":"basmathi",
+                "name":"atta",
                 "weight":30,
                 "price":70
                 },
                 {
-                "name":"jeera",
+                "name":"bread",
                 "weight":20,
                 "price":60
                 },
                 {
-                "name":"ponni",
+                "name":"bun",
                 "weight":40,
                 "price":80
                 }

@@ -51,10 +51,10 @@ class Utility
     //returns string
     public static function string_Input()
     {                               
-       //taking input from user
-       $str = readline(" ");
-       //validation for one word string
-       while((!(strlen($str)>0)) || (count(explode(" ",$str))>1) || (!preg_match("/^[a-zA-Z ]*$/",$str)))
+        //taking input from user
+        $str = readline(" ");
+        //validation for one word string
+        while((!(strlen($str)>0)) || (count(explode(" ",$str))>1) || (!preg_match("/^[a-zA-Z ]*$/",$str)))
             {                
                 echo "enter a valid string \n";
                 //calling function again if in case not valid
@@ -67,10 +67,10 @@ class Utility
     //returns string
     public static function two_String_Input()
     {                               
-       //taking input from user
-       $str = readline(" ");
-       //validation for two word string
-       while((count(explode(" ",$str))<2) || (!preg_match("/^[a-zA-Z ]*$/",$str)))
+        //taking input from user
+        $str = readline(" ");
+        //validation for two word string
+        while((count(explode(" ",$str))<2) || (!preg_match("/^[a-zA-Z ]*$/",$str)))
             {                
                 echo "enter a valid string \n";
                 //calling function again if in case not valid
@@ -130,28 +130,28 @@ class Utility
     {                               
         
        fscanf(STDIN, "%s\n", $str);
-       
-       //validating the string input
-       while((!(strlen($str)>0)) || (is_numeric($str)) || ($str==null))
-            {                
-                echo "enter a valid string \n";
-                //calling function again if in case not valid
-                $str = Utility::get_String();
-            }
+        
+        //validating the string input
+        while((!(strlen($str)>0)) || (is_numeric($str)) || ($str==null))
+        {                
+            echo "enter a valid string \n";
+            //calling function again if in case not valid
+            $str = Utility::get_String();
+        }
         return $str;
     } 
 
     //function to take positive number input
     public static function number_Input()
     {                               
-    fscanf(STDIN, "%s\n", $num);
-    //validation for positive number
-    while(($num<0) || (!(is_numeric($num))))
-    {
-        echo "enter a valid number ";
-        //calling function again if in case not valid
-        $num = Utility::number_Input();
-    }
+        fscanf(STDIN, "%s\n", $num);
+        //validation for positive number
+        while(($num<0) || (!(is_numeric($num))))
+        {
+            echo "enter a valid number ";
+            //calling function again if in case not valid
+            $num = Utility::number_Input();
+        }
         return $num;
     } 
 }

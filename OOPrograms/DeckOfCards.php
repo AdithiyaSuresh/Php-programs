@@ -18,6 +18,33 @@ class DeckOfCards
         $this->rank = array("2", "3", "4", "5", "6", "7", "8", "9", "10","Jack", "Queen", "King", "Ace");
         $this->cards = [];
     }
+    public function cards()
+    {
+        $deck = [];
+        $i = 0;
+        for ($x=0;$x<count($this->suit);$x++) 
+        {
+            for ($y=0;$y<count($this->rank);$y++) 
+            {
+                $deck[$i++] = $this->rank[$y].",".$this->suit[$x];//pushing all the elmets into the deck array
+
+            }
+        }
+        return $deck;
+    }
+    public function shuffle($deck)
+    {
+        $totalCount = (count($this->suit)*count($this->rank));
+        for ($x=0;$x<$totalCount;$x++) 
+        {
+            //methond to take the random numbers to arrange the cards randomly
+            $random = mt_rand(0,$totalCount-1);
+            $temp = $deck[$x]; //taking element ref in temprovory variable
+            $deck[$x] = $deck[$random];
+            $deck[$random] = $temp;
+        }
+        return $deck;
+    }
 
     //function to initialize cards array
     //returns an array 

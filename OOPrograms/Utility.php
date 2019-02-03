@@ -1,4 +1,6 @@
 <?php
+require_once ('Player.php');
+
 /**
  * Helper Function containing methods to use in othere php class
  * @author Adithiya suresh
@@ -154,6 +156,54 @@ class Utility
         }
         return $num;
     } 
+
+     //function to do insertion sort for array
+    //param - array and length of array
+    //returns sorted array
+    public static function insertion_Sort_Str($arr,$num)
+    {
+        for($i =1 ;$i <$num ;$i++)
+        {
+            for($j =$i ;$j > 0 ;$j--)
+            {
+                //comparing two strings
+                if(strcmp($arr[$j-1],$arr[$j])>0)
+                {
+                    $temp = $arr[$j -1];
+                    $arr[$j-1] = $arr[$j];
+                    $arr[$j] = $temp;
+                }
+            
+            }
+
+        }
+        return $arr;
+    }
+
+     //function to do insertion sort for array
+    //param - array and length of array
+    //returns sorted array
+    public static function insertion_Sort_Num($arr, $num)
+    {
+
+
+        for($i =1 ;$i <$num ;$i++)
+        {
+            for($j =$i ;$j > 0 ;$j--)
+            {
+                //comparing two numbers
+                if($arr[$j-1] > $arr[$j])
+                {
+                    $temp = $arr[$j -1];
+                    $arr[$j-1] = $arr[$j];
+                    $arr[$j] = $temp;
+                }
+            
+            }
+
+        }
+        return $arr;
+    }
 }
 
 ?>

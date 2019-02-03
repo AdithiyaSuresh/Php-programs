@@ -6,9 +6,9 @@
   require_once ('Element.php');
   class Queue
   { 
-    private $front = null;
-    private $back = null;
-    private $size = null; 
+    public $front = null;
+    public $back = null;
+    public $size = null; 
     
     /**
        * Constructor function to initialize the list 
@@ -87,7 +87,7 @@
       $str = "";
       while($temp)
       {
-          $str = $str.$temp->data;
+          $str = $str.$temp->value;
           if($temp->next!=null)
           {
               $str = $str." ";

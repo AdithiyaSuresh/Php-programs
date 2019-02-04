@@ -1,19 +1,28 @@
 
 <?php
 
+//require the following  to work
 require_once ('Utility.php');
 require_once ('Queue.php');
 require_once ('DeckOfCards.php');
 
+//class player having deck of cards and ability to sort the cards
 class Player
 {
+	//member functions 
+
+	//initializing palyerNumber to zero
 	public $palyerNumber = 0;
-    public $cards = null;	
+
+	//initializing cards to null
+	public $cards = null;
+	
+	//initializing queue to null
     public $queue = null;
 
 	/**
 	 * setter to set the cards of a player
-	 * @param a queue of cards
+	 * @param cards queue of cards
 	 */
     public function setCards($cards) 
     {
@@ -21,7 +30,7 @@ class Player
 	}
 	
 	/**
-	 * returns q queue of cards of a player
+	 * getter to return q queue of cards of a player
 	 * @return queue of cards
 	 */
     public function getCards() 
@@ -33,7 +42,8 @@ class Player
 	 * setter for the player number
 	 * @param num player number
 	 */
-	public function setPlayerNumber($num) {
+	public function setPlayerNumber($num) 
+	{
 		$this->palyerNumber = $num;
 	}
 	
@@ -51,15 +61,29 @@ class Player
 	 */
     public function sortCards($cards) 
     {
-        $num = count($cards);
-        $cards = Utility::insertion_Sort_Num($cards,$num);
+		//length of array
+		$num = count($cards);
+		
+		//calling insertion sort to sort
+		$cards = Utility::insertion_Sort_Str($cards,$num);
+		
+		//returning sorted cards
         return $cards;
     }
 
+	/**
+	 * function to shuffle the cards
+	 * @param deck sorted cards
+	 */
     public function shuffle($deck)
     {
-        $cards = new DeckOfCards();
-        $deck = $cards->shuffle($deck);
+		//creating deckofcards object
+		$cards = new DeckOfCards();
+		
+		//calling function of deckofcards to shuffle cards
+		$deck = $cards->shuffle($deck);
+		
+		//returns shuffled cards
         return $deck;
     }
     

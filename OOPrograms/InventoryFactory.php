@@ -37,7 +37,9 @@ class InventoryFactory
         //returning inventories
         return $this->inventories;
     }
-
+        
+       
+   
     //function to print the value of every inventory
     public static function inventory_Value($inventoryObject)
     {

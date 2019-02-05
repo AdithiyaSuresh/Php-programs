@@ -1,0 +1,15 @@
+{
+    "account": [
+                {
+                "name": "google",
+                "price": 213,
+                "quantity": 25
+                }
+               ],
+      "stack": [
+                " bought"
+               ],
+      "queue": [
+                "25 google shares bought on Wed 11\/11\/18 at 11:46:12"
+               ]
+}

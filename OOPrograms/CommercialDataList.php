@@ -12,43 +12,13 @@ set_error_handler(function ($errno, $errstr, $error_file, $error_line)
     die();
 });
 
-//require teh files from the below files
+//require following to work
 require_once ("Utility.php");
 require_once ("Stack.php");
 require_once ("Queue.php");
 require_once ("Node.php");
+require_once ('StockData.php');
 
-/**
- * function to get valid integer from the console
- */
-function validInt($int, $min, $max)
-{
-    //checks for input iteratively untill gets correct input
-    while (filter_var($int, FILTER_VALIDATE_INT, array("options" => array("min_range" => $min, "max_range" => $max))) === false) {
-        echo ("Variable value is not within the legal range\n");
-        echo "enter again : ";
-        $int = Utility::integer_Input();
-    }
-    return $int;
-}
-
-//class to create object of stock
-class Stock
-{
-    //var to store the data of stock
-    public $name;
-    //price of stack
-    public $price;
-    //quantity of share in the stock
-    public $quantity;
-    //constructor to initialize the variables in the class
-    function __construct($name, $price, $quantity)
-    {
-        $this->name = $name;
-        $this->price = $price;
-        $this->quantity = $quantity;
-    }
-}
 /**
  * stockAcount class for perfoming operation on queue and stack
  */
@@ -110,7 +80,7 @@ class StockAccount
     }
 }
 /**
- * funtion to but stocks from the list and add it to the account
+ * funtion to buy stocks from the list and add it to the account
  */
 function buy($stockacc)
 {
@@ -123,14 +93,14 @@ function buy($stockacc)
     //askins use rfor input
     echo "Enter No with Stock To Buy : ";
     //var ch to store stock to buy
-    $ch = validInt(Utility::integer_Input(), 1, 8);
+    $ch = Utility::validInt(Utility::integer_Input(), 1, 8);
     echo $list[$ch - 1]->name . " selected!\nEnter No Of Shares To Buy of " . $list[$ch - 1]->name . " : ";
     //amnt to store the no of shares to buy
-    $amnt = validInt(Utility::integer_Input(), 0, 90000);
+    $amnt = Utility::validInt(Utility::integer_Input(), 0, 90000);
     //getting the stock from the list
     $stock = $list[$ch - 1];
     //creating new stock
-    $stock = new Stock($stock->name, $stock->price, $amnt);
+    $stock = new StockData($stock->name, $stock->price, $amnt);
     //adding the stock to the account if already in the list and return
     for ($i = 0; $i < count($account); $i++) {
         if ($account[$i]['name'] == $stock->name) {
@@ -169,9 +139,9 @@ function sell($stockacc)
     //taking the user input
     echo "Enter No with Stock To Sell : ";
     //validating the input
-    $ch = validInt(Utility::integer_Input(), 1, count($account));
+    $ch = Utility::validInt(Utility::integer_Input(), 1, count($account));
     echo $account[$ch - 1]->name . " selected!\nEnter No Of Shares To Sell of " . $account[$ch - 1]->name . " : ";
-    $qt = validInt(Utility::integer_Input(), 1, $account[$ch - 1]->quantity);
+    $qt = Utility::validInt(Utility::integer_Input(), 1, $account[$ch - 1]->quantity);
     //removing the stock
     $account[$ch - 1]->quantity -= $qt;
     $stack[]=($account[ch - 1]->name . " sold");

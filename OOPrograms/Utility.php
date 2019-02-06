@@ -488,25 +488,31 @@
             return $account;
         }
 
-        //function to print the stock currently in the stock
+        //function to print the stock currently in the customer account
         public static function printAccount($account)
         {
             echo "No | Stock Name | Share Price | No. Of Shares | Stock Price \n";
             $i = 0;
-            for ($i=1; $i < count($account) ; $i++) {
+
+            //looping over and printing the account details
+            for ($i=1; $i < count($account) ; $i++) 
+            {
                 $key = $account[$i];
                 echo sprintf("%-2u | %-10s | rs %-8u | %-13u | rs %u", $i, $key->name, $key->price, $key->quantity, ($key->quantity * $key->price)) . "\n";
             }
         }
 
         /**
-        * function to display the report of the stocks
+        * function to display the report of the stocks in account
         */
         public static function report($account)
         {
             $total = 0;
             echo "Stock Name | Per Share Price | No. Of Shares | Stock Price\n";
-            for ($i=1; $i < count($account) ; $i++) {
+
+            //looping over and printing the account details and the account balance
+            for ($i=1; $i < count($account) ; $i++) 
+            {
                 $key = $account[$i];
                 echo sprintf("%-10s | rs %-12u | %-13u | rs %u", $key->name, $key->price, $key->quantity, ($key->quantity * $key->price)) . "\n";
                 $total += ($key->quantity * $key->price);

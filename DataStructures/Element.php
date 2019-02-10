@@ -1,5 +1,6 @@
 <?php
-class Element{
+class Element
+{
   public $value;
   public $next;
 }

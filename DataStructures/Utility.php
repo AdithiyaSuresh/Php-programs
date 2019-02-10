@@ -52,6 +52,18 @@ class Utility
         return $num;
     }
 
+     /**
+     * Function to find the factorial
+     */
+    public static function factorial($n)
+    {
+        $fact = 1;
+        for ($i = 1; $i <= $n; $i++) {
+            $fact = $fact * $i;
+        }
+        return $fact;
+    }
+
     //function to check whether a number is prime
     //return a boolean value
     public static function is_Prime($num)

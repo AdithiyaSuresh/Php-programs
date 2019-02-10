@@ -104,7 +104,7 @@ function buy($stockacc)
     //adding the stock to the account if already in the list and return
     for ($i = 0; $i < count($account); $i++) {
         if ($account[$i]['name'] == $stock->name) {
-            $account[$i]->quantity += $stock->quantity;
+            $account[$i]['quantity'] += $stock->quantity;
             echo "Bought $stock->quantity " . "$stock->name shares successfully";
             $stack[]= ($account[$ch - 1]->name . " bought");
             $queue[]=("$amnt " . $account[$ch - 1]->name . "shares bought at " . date("h:i:s D d/m/y"));
@@ -114,7 +114,7 @@ function buy($stockacc)
             return $stockacc;
         }
     }
-    //or else adds the new stack the end pf the list
+    //or else adds the new stack the end of the list
     $account[] = $stock;
     echo "Bought $stock->quantity " . "$stock->name shares successfully";
     $stack[]=(" bought");
@@ -175,7 +175,8 @@ function menu($stockacc)
     echo "Enter 3 to Print Stock Report\nEnter 4 to see Transaction History\nEnter anything else to exit\n";
     $choice = Utility::integer_Input();
     //switch case to run according to condition
-    switch ($choice) {
+    switch ($choice) 
+    {
         case '1':
             $stockacc = buy($stockacc);
             echo "\n\n";
@@ -255,52 +256,52 @@ function printStockList()
     }
     return $list;
 }
-/**
- * convert standard stdClass object to custom object cast
- * @param $destination Object to which to convert
- * @param stdClass $source Source std:class object
- */
-function cast(&$destination, stdClass $source)
-{
-    $sourceRef = new ReflectionObject($source);
-    $sourceProperties = $sourceRef->getProperties();
-    foreach ($sourceProperties as $sourceProperty) {
-        $name = $sourceProperty->getName();
-        if (gettype($destination->{$name}) == "object") {
-            echo "rec";
-            cast($destination->{$name}, $source->$name);
-        } else {
-            $destination->{$name} = $source->$name;
-        }
-    }
-}
-/**
- * function fixCast take two arguments which holds destination and source
- */
-function fixCast(&$destination, $source)
-{
-    if (is_array($source)) {
-        $getClass = get_class($destination[0]);
-        $array = array();
-        foreach ($source as $sourceItem) {
-            $obj = new $getClass();
-            fixCast($obj, $sourceItem);
-            $array[] = $obj;
-        }
-        $destination = $array;
-    } else {
-        $sourceReflection = new \ReflectionObject($source);
-        $sourceProperties = $sourceReflection->getProperties();
-        foreach ($sourceProperties as $sourceProperty) {
-            $name = $sourceProperty->getName();
-            if (is_object(@$destination->{$name})) {
-                fixCast($destination->{$name}, $source->$name);
-            } else {
-                $destination->{$name} = $source->$name;
-            }
-        }
-    }
-}
+// /**
+//  * convert standard stdClass object to custom object cast
+//  * @param $destination Object to which to convert
+//  * @param stdClass $source Source std:class object
+//  */
+// function cast(&$destination, stdClass $source)
+// {
+//     $sourceRef = new ReflectionObject($source);
+//     $sourceProperties = $sourceRef->getProperties();
+//     foreach ($sourceProperties as $sourceProperty) {
+//         $name = $sourceProperty->getName();
+//         if (gettype($destination->{$name}) == "object") {
+//             echo "rec";
+//             cast($destination->{$name}, $source->$name);
+//         } else {
+//             $destination->{$name} = $source->$name;
+//         }
+//     }
+// }
+// /**
+//  * function fixCast take two arguments which holds destination and source
+//  */
+// function fixCast(&$destination, $source)
+// {
+//     if (is_array($source)) {
+//         $getClass = get_class($destination[0]);
+//         $array = array();
+//         foreach ($source as $sourceItem) {
+//             $obj = new $getClass();
+//             fixCast($obj, $sourceItem);
+//             $array[] = $obj;
+//         }
+//         $destination = $array;
+//     } else {
+//         $sourceReflection = new \ReflectionObject($source);
+//         $sourceProperties = $sourceReflection->getProperties();
+//         foreach ($sourceProperties as $sourceProperty) {
+//             $name = $sourceProperty->getName();
+//             if (is_object(@$destination->{$name})) {
+//                 fixCast($destination->{$name}, $source->$name);
+//             } else {
+//                 $destination->{$name} = $source->$name;
+//             }
+//         }
+//     }
+// }
 //checking the user account
 $stockacc = json_decode(file_get_contents("AccountList.json") , true );
 if($stockacc==null)

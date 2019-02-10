@@ -75,6 +75,21 @@ class Utility
             echo "percentage of headcount = ".(int)(($headcount*100)/($headcount+$tailcount))."%\n";
             echo "precentage of tailcount = ".(int)(($tailcount*100)/($headcount+$tailcount))."%\n";
         }
+
+        //function to get an integer input
+        //returns an integer
+        public static function integer_Inputs()
+        {
+            fscanf(STDIN, "%s\n", $num);
+            //validating the integer input
+            while((Utility::check_float($num)) || (!(is_numeric($num))) || ($num<0))
+            {
+                echo "enter a valid number ";
+                //calling function again if in case not valid
+                $num = Utility::integer_Inputs();
+            }
+            return $num;
+        }
         
         //function to get the year
         //returns the year

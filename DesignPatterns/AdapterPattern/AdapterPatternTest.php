@@ -128,6 +128,11 @@
         }
     }
 
+    /**
+     *testing the adapter implementation
+     */
+    echo " ADAPTER PATTERN\n\n";
+
     //taking voltage for mobile from user
     echo "enter the votage to set for the mobile\n";
     $volt1 = Utility::integer_Input();

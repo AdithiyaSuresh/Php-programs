@@ -26,7 +26,7 @@
     /** 
      * taking values for ram hdd and cpu for Pc from user
      */
-    echo " Factory Design Pattern\n\n";
+    echo " FACTORY DESIGN PATTRERN\n\n";
     echo "enter the ram, hdd and cpu values for Pc\n";
     echo "ram = ";
     $ram = Utility::integer_Input();

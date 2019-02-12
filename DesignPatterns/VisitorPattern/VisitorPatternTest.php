@@ -49,9 +49,15 @@
         //internally class patricular visitee accept function to accept the visitor
         $visitee_in->accept($visitor_in);
     }
+    
+    //testing reflection for constructor 
     echo "\nTesting reflection for constructor of BookVisitee\n";
     $class = new ReflectionClass('BookVisitee');
     echo $class->getConstructor();
+
+    //testing reflection for method
+    echo "\nTesting reflection for methods of BookVisitee\n";
+    echo $class->getMethod('getAuthor');
   
 
 ?>

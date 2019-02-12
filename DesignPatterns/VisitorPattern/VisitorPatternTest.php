@@ -57,7 +57,7 @@
 
     //testing reflection for method
     echo "\nTesting reflection for methods of BookVisitee\n";
-    echo $class->getMethod('getAuthor');
+    echo $class->getMethod('accept');
   
 
 ?>

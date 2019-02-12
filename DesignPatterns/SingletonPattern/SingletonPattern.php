@@ -48,4 +48,18 @@
   echo "Second borrower's Company and Model: \n";
   //getting the model and company details
   echo $mobileBorrower1->getCompanyAndModel()."\n\n";
+
+  //gets class as a reflection class
+  $reflector = new ReflectionClass('MobileSingleton');
+ 
+  //getting the properties of the class as an array
+  $properties = $reflector->getProperties();
+  echo "printing properties of class\n";
+  print_r($properties);
+  
+  //getting the default properties of the class
+  $defaults = $reflector->getDefaultProperties();
+  echo "printing properties of class\n";
+  print_r($defaults);
+
 ?>

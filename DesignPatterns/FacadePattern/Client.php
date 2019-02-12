@@ -3,6 +3,7 @@
     /**
      *require the following to work
      */
+    require "/home/bridgeit/Adithiya/OOPrograms/Utility.php";
     require_once ('Facade.php');
     require_once ('Subsystem1.php');
     require_once ('Subsystem2.php');
@@ -23,8 +24,12 @@
     
     //initializing facade object
     $facade = new Facade($subsystem1,$subsystem2);
-    
+
+    //taking input from user for the type of subsytem
+    echo "enter the type of subsytem to perform operations\n";
+    echo "enter 1 for subsytem1 and 2 for subsytem2\n";
+    $num = Utility::integer_Input();
+
     //calling operation function of facade
-    echo $facade->operation(1);
-    echo $facade->operation(2);
+    echo $facade->operation($num);
  ?>

@@ -44,7 +44,7 @@
          */
         public function get60Volts()
         {
-            return $this->getVolts()/40;
+            return $this->getVolts()/4;
         }
     }
 ?>

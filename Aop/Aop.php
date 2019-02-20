@@ -1,67 +1,96 @@
-<?php
-/********************************************************************************************
-* Purpose  : Implementation of Aop ie cross cutting concerns. Using logger example
-* File Name: InversionOfControl.php
-* Author   : Adithiya Suresh
-* Version  : 1.0
-* Since    : 06/02/2019
-********************************************************************************************/
-/**
- * class Logger is having one function which implements all the function of UserProfile by creating 
- * one logger Object and passing this object to user profile constructor during creation of user Profile object
- */
-class Logger
-{
-    public function log($message)
-    {
-        echo ("Logging Message : $message\n");
-    }
-}
-/**
- * UserProfile Class for implementin all the number of function and and also having a constructor of 
- * Logger class which takes one argument
- */
-class UserProfile
-{
-    private $logger;
-    public function __construct(Logger $logger)
-    {
-        $this->logger = $logger;
-    }
+    <?php
+    /********************************************************************************************
+    * Purpose  : Implementation of Aop ie cross cutting concerns. Using logger example
+    * File Name: Aop.php
+    * Author   : Adithiya Suresh
+    * Version  : 1.0
+    * Since    : 15/02/2019
+    ********************************************************************************************/
+    
     /**
-     * this function create user and display the message as 
-     * logging message user created
+     * class Logger is having one function which implements all the function of UserProfile by creating 
+     * one logger Object and passing this object to user profile constructor during creation of user Profile object
      */
-    public function createUser()
+    class Logger
     {
-        // $logger = new Logger();
-        // $logger->log("User Created:");
-        $this->logger->log("User Created");
+        /**
+         * function to log the passed message
+         * @param message to be logged
+         * @return void
+         */
+        public function log($message)
+        {
+            echo ("Logging Message : $message\n");
+        }
     }
+    
     /**
-     * this function update user and display the message as 
-     * logging message user update
+     * UserProfile Class for implementing all the number of function and and also having a constructor of 
+     * Logger class which takes one argument
      */
-    public function updateUser()
+    class UserProfile
     {
-        // $logger = new Logger();
-        // $logger->log("User Created:");
-        $this->logger->log("User Created");
+        //member variable
+        private $logger;
+
+        /**
+         * constructor to initialize values
+         * @param logger instance
+         * @return void
+         */
+        public function __construct(Logger $logger)
+        {
+            $this->logger = $logger;
+        }
+        
+        /**
+         * this function create user and display the message as 
+         * logging message user created
+         * @param empty
+         * @return void
+         */
+        public function createUser()
+        {
+            // $logger = new Logger();
+            // $logger->log("User Created:");
+            $this->logger->log("User Created");
+        }
+        
+        /**
+         * this function update user and display the message as 
+         * logging message user update
+         * @param empty
+         * @return void
+         */
+        public function updateUser()
+        {
+            // $logger = new Logger();
+            // $logger->log("User Created:");
+            $this->logger->log("User Updated");
+        }
+        
+        /**
+         * this function delete user and display the message as 
+         * logging message user delete
+         * @param empty
+         * @return void
+         */
+        public function deleteUser()
+        {
+            // $logger = new Logger();
+            // $logger->log("User Created:");
+            $this->logger->log("User Deleted");
+        }
     }
-    /**
-     * this function delete user and display the message as 
-     * logging message user delete
-     */
-    public function deleteUser()
-    {
-        // $logger = new Logger();
-        // $logger->log("User Created:");
-        $this->logger->log("User Deleted");
-    }
-}
-$logger = new Logger();   // creating object of logger class
-$profile  = new UserProfile($logger);   // creating object of UserProfile class
-$profile->createUser()."\n";
-$profile->updateUser()."\n";
-$profile->deleteUser()."\n";
-?>
+    
+    //creating object of logger class
+    $logger = new Logger();  
+    
+    //creating object of UserProfile class 
+    $profile  = new UserProfile($logger); 
+    
+    //calling functions
+    $profile->createUser()."\n";
+    $profile->updateUser()."\n";
+    $profile->deleteUser()."\n";
+    ?>

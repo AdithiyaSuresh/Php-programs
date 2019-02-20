@@ -5,7 +5,7 @@
 * File Name: InversionOfControl.php
 * Author   : Adithiya Suresh
 * Version  : 1.0
-* Since    : 06/02/2019
+* Since    : 15/02/2019
 ********************************************************************************************/
  
     /**
@@ -15,12 +15,20 @@
      */
     class DependencyInjector
     {
+        //memeber variable
         protected $services = [];
         
+        /**
+         *no argument constructor
+         * @param empty
+         * @return void
+         */
         public function __construct() {}
         
         /**
-         * to get the service
+         * function to get the service
+         * @param service_Name name of the service
+         * @return service service of passed service name 
          */
         public function getService($service_Name) 
         {
@@ -34,7 +42,10 @@
         }
 
         /**
-         * register a new service
+         * function register a new service
+         * @param service_Name name of the service
+         * @param callable for callback function
+         * @return void
          */
         public function setService($service_Name,callable $callable) 
         {
@@ -47,6 +58,7 @@
         }
     }
 
+        //associative array for different services
         $config = [
             'aws'=>['key'=>'123','private_Key'=>'abc'],
             'db'=>['user'=>'jass','password'=>'xyz']
@@ -75,6 +87,7 @@
         $db = $di->getService('database');
         $aws = $di->getService('aws');
     
+    //to print the object
     print_r($aws)."\n";
     print_r($db)."\n";
 ?>
